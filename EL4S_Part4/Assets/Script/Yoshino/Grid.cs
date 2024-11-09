@@ -111,9 +111,9 @@ public class Grid : MonoBehaviour
         {
             if (IsRowFull(y))
             {
-                //DeleteRow(y);
-                //DecreaseRowsAbove(y + 1);
-                MathRow(y);
+                DeleteRow(y);
+                DecreaseRowsAbove(y + 1);
+                //MathRow(y);
                 --y;
             }
         }

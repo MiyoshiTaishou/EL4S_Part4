@@ -4,7 +4,7 @@ public class Tetromino : MonoBehaviour
 {
     // 落下に関する時間の変数
     float fall = 0;
-    public float fallSpeed = 1; // 落下速度
+    [Tooltip("落下スピード")] public float fallSpeed = 1; // 落下速度
 
     void Update()
     {
@@ -46,31 +46,46 @@ public class Tetromino : MonoBehaviour
             else
                 Grid.Instance.UpdateGrid(transform); // 位置が有効ならグリッドを更新
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow) || Time.time - fall >= fallSpeed)
+        else if (Time.time - fall >= fallSpeed)
         {
-            // ブロックを一段下に移動
-            transform.position += new Vector3(0, -1f, 0);
-            // 位置が有効かチェック
-            if (!IsValidGridPos())
+            MinoDown();
+        }
+
+        if(Input.GetKey(KeyCode.DownArrow))
+        {
+            if(Time.time - fall >= fallSpeed / 8)
             {
-                // 位置が無効なら元に戻す
-                transform.position += new Vector3(0, 1f, 0);
-                // グリッドを更新
-                Grid.Instance.UpdateGrid(transform);
-                // 完全に埋まった行を削除
-                Grid.Instance.DeleteFullRows();
-                // 新しいテトリミノを生成
-                FindObjectOfType<Spawner>().SpawnNext();
-                enabled = false;
+                MinoDown();
             }
-            else
-            {
-                Grid.Instance.UpdateGrid(transform);
-            }
-            // 落下時間をリセット
-            fall = Time.time;
+            
         }
     }
+
+    void MinoDown()
+    {
+        // ブロックを一段下に移動
+        transform.position += new Vector3(0, -1f, 0);
+        // 位置が有効かチェック
+        if (!IsValidGridPos())
+        {
+            // 位置が無効なら元に戻す
+            transform.position += new Vector3(0, 1f, 0);
+            // グリッドを更新
+            Grid.Instance.UpdateGrid(transform);
+            // 完全に埋まった行を削除
+            Grid.Instance.DeleteFullRows();
+            // 新しいテトリミノを生成
+            FindObjectOfType<Spawner>().SpawnNext();
+            enabled = false;
+        }
+        else
+        {
+            Grid.Instance.UpdateGrid(transform);
+        }
+        // 落下時間をリセット
+        fall = Time.time;
+    }
+
     // グリッド内での位置が有効かどうかを判定する
     bool IsValidGridPos()
     {
