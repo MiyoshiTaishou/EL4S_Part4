@@ -32,21 +32,21 @@ public class MinoSuuji : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("‚à‚¶" + moji);
-        int dochi = Random.Range(0, 2);
-        if (dochi == 0) //”š‚ğ“ü‚ê‚é
-        {
-            int ransuu = Random.Range(0, suuji.Length);
-            moji = suuji[ransuu];
-        }
-        else if (dochi == 1) //‹L†‚ğ“ü‚ê‚é
-        {
-            int ransuu = Random.Range(0, kigo.Length);
-            moji = kigo[ransuu];
-        }
-        else
-        {
-            Debug.LogError("‚È‚¢‚æ" + dochi);
-        }
+        //Debug.Log("‚à‚¶" + moji);
+        //int dochi = Random.Range(0, 2);
+        //if (dochi == 0) //”š‚ğ“ü‚ê‚é
+        //{
+        //    int ransuu = Random.Range(0, suuji.Length);
+        //    moji = suuji[ransuu];
+        //}
+        //else if (dochi == 1) //‹L†‚ğ“ü‚ê‚é
+        //{
+        //    int ransuu = Random.Range(0, kigo.Length);
+        //    moji = kigo[ransuu];
+        //}
+        //else
+        //{
+        //    Debug.LogError("‚È‚¢‚æ" + dochi);
+        //}
     }
 }
