@@ -19,5 +19,24 @@ public class minotext : MonoBehaviour
     void Update()
     {
         text.text = suji.moji.ToString();
+
+        if(suji.moji == -1)
+        {
+            text.text = "+";
+        }
+        else if(suji.moji == -2)
+        {
+            text.text = "-";
+        }
+        else if(suji.moji == -3)
+        {
+            text.text = "Å~";
+        }
+        else if(suji.moji == -4)
+        {
+            text.text = "ÅÄ";
+        }
+
+        gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 }
