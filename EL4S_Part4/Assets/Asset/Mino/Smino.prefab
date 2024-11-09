@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8979763892521555652}
   - component: {fileID: 1551336122968314126}
   - component: {fileID: 29629982783907056}
+  - component: {fileID: 3288847229379929978}
   m_Layer: 0
   m_Name: Quad
   m_TagString: Untagged
@@ -61,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e2c1f9c0da610344c813e6d3ef9869d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83,6 +84,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3288847229379929978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174643479570016378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebf7b3f6c39e7bf49b2ffe097fbd81c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moji: 0
+  suuji: 010000000200000003000000040000000500000006000000070000000800000009000000
+  kigo: fffffffffefffffffdfffffffcffffff
 --- !u!1 &787266097513362769
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,6 +110,7 @@ GameObject:
   - component: {fileID: 1219639190445478011}
   - component: {fileID: 5897032263439964047}
   - component: {fileID: 8355760100341821319}
+  - component: {fileID: 2508822610747792918}
   m_Layer: 0
   m_Name: Quad (1)
   m_TagString: Untagged
@@ -144,7 +161,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e2c1f9c0da610344c813e6d3ef9869d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -166,6 +183,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2508822610747792918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787266097513362769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebf7b3f6c39e7bf49b2ffe097fbd81c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moji: 0
+  suuji: 010000000200000003000000040000000500000006000000070000000800000009000000
+  kigo: fffffffffefffffffdfffffffcffffff
 --- !u!1 &948414931193612783
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,6 +209,7 @@ GameObject:
   - component: {fileID: 3012229163742375984}
   - component: {fileID: 4652967276570621785}
   - component: {fileID: 2502167342355329447}
+  - component: {fileID: 5302221824706077911}
   m_Layer: 0
   m_Name: Quad (2)
   m_TagString: Untagged
@@ -227,7 +260,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e2c1f9c0da610344c813e6d3ef9869d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -249,6 +282,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5302221824706077911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948414931193612783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebf7b3f6c39e7bf49b2ffe097fbd81c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moji: 0
+  suuji: 010000000200000003000000040000000500000006000000070000000800000009000000
+  kigo: fffffffffefffffffdfffffffcffffff
 --- !u!1 &1432907685320957728
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,6 +308,7 @@ GameObject:
   - component: {fileID: 4055460713211376803}
   - component: {fileID: 3300954927114371330}
   - component: {fileID: 6726840628718702541}
+  - component: {fileID: 1590312100226967319}
   m_Layer: 0
   m_Name: Quad (3)
   m_TagString: Untagged
@@ -310,7 +359,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e2c1f9c0da610344c813e6d3ef9869d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -332,6 +381,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1590312100226967319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432907685320957728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebf7b3f6c39e7bf49b2ffe097fbd81c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moji: 0
+  suuji: 010000000200000003000000040000000500000006000000070000000800000009000000
+  kigo: fffffffffefffffffdfffffffcffffff
 --- !u!1 &7663653049885406341
 GameObject:
   m_ObjectHideFlags: 0
