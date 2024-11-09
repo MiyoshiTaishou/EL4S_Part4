@@ -12,6 +12,8 @@ public class Grid : MonoBehaviour
     private const float lineOffset = -0.5f;
     public GameObject cubeBlock;
 
+    public GameObject ScoreObject;
+
     private void Start()
     {
         // ‰¡ˆê—ñ
@@ -67,6 +69,14 @@ public class Grid : MonoBehaviour
         }
     }
 
+    public void MathRow(int y)
+    {
+        for (int x = 0; x < width; ++x)
+        {
+            ScoreObject.GetComponent<ScoreMath>().Add(grid[x, y].gameObject.GetComponent<MinoSuuji>().moji);           
+        }
+    }
+
     public void DecreaseRow(int y)
     {
         for (int x = 0; x < width; ++x)
@@ -101,8 +111,9 @@ public class Grid : MonoBehaviour
         {
             if (IsRowFull(y))
             {
-                DeleteRow(y);
-                DecreaseRowsAbove(y + 1);
+                //DeleteRow(y);
+                //DecreaseRowsAbove(y + 1);
+                MathRow(y);
                 --y;
             }
         }
