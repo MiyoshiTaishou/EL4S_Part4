@@ -76,6 +76,7 @@ public class Tetromino : MonoBehaviour
             Grid.Instance.DeleteFullRows();
             // 新しいテトリミノを生成
             FindObjectOfType<Spawner>().SpawnNext();
+            GetComponent<AudioSource>().Play();
             enabled = false;
         }
         else
