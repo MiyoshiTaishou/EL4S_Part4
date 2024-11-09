@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Minomath : MonoBehaviour
 {
-    public int[,] apath;
+    public int[,] apath;//Œ`‚ª“ü‚Á‚Ä‚é
     public int[,] suujikigoupath;
 
     public int[] suuji = {1, 2, 3, 4, 5, 6, 7, 8, 9 };
@@ -14,7 +14,6 @@ public class Minomath : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        apath=GetComponent<Tetromino>().GetShape();
         for(int i=0;i<apath.GetLength(0);i++)
         {
             for(int j=0;j<apath.GetLength(1);j++)

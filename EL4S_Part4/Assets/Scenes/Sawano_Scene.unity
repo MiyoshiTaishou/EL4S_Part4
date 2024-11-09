@@ -292,6 +292,7 @@ GameObject:
   - component: {fileID: 1924909917}
   - component: {fileID: 1924909916}
   - component: {fileID: 1924909920}
+  - component: {fileID: 1924909921}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -401,6 +402,21 @@ MonoBehaviour:
   TateMax: 20
   confX: 0.5
   confY: 0.5
+--- !u!114 &1924909921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924909915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebf7b3f6c39e7bf49b2ffe097fbd81c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moji: 0
+  suuji: 010000000200000003000000040000000500000006000000070000000800000009000000
+  kigo: fffffffffefffffffdfffffffcffffff
 --- !u!1 &2063532790
 GameObject:
   m_ObjectHideFlags: 0

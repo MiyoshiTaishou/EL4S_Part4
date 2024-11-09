@@ -8,36 +8,37 @@ public class MinoPos : MonoBehaviour
     [SerializeField, Header("‰¡ŒW”")]public float confX;
     [SerializeField, Header("cŒW”")] public float confY;
 
-    [SerializeField]public List<List<bool>> pos;
+    [SerializeField,Header("ˆÊ’u")]public List<List<int>> pos;
+
     // Start is called before the first frame update
     void Start()
     {
-        for(int i=0; i<SideMax; i++) 
-        {
-            for(int j=0;j<TateMax;j++)
-            {
-                pos[i].Add(false);
-            }
-        }
-        pos[SideMax / 2][TateMax] = true;
+        //for(int i=0; i<SideMax; i++) 
+        //{
+        //    for(int j=0;j<TateMax;j++)
+        //    {
+        //        pos[i,j]=0;
+        //    }
+        //}
+        //pos[SideMax / 2,TateMax] = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < SideMax; i++)
-        {
-            for (int j = 0; j < TateMax; j++)
-            {
-                if (pos[i][j])
-                {
-                    Vector3 pos=transform.position;
-                    pos.x = i * confX;
-                    pos.y = j * confY;
-                    transform.position = pos;
-                    return;
-                }
-            }
-        }
+        //for (int i = 0; i < SideMax; i++)
+        //{
+        //    for (int j = 0; j < TateMax; j++)
+        //    {
+        //        if (pos[i, j] == 1)
+        //        {
+        //            Vector3 pos=transform.position;
+        //            pos.x = i * confX;
+        //            pos.y = j * confY;
+        //            transform.position = pos;
+        //            return;
+        //        }
+        //    }
+        //}
     }
 }
