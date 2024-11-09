@@ -5,6 +5,7 @@ public class Tetromino : MonoBehaviour
     // 落下に関する時間の変数
     float fall = 0;
     [Tooltip("落下スピード")] public float fallSpeed = 1; // 落下速度
+    [Tooltip("落下スピード(キー入力)")] public float fallSpeedKey = 1; // 落下速度
 
     void Update()
     {
@@ -53,7 +54,7 @@ public class Tetromino : MonoBehaviour
 
         if(Input.GetKey(KeyCode.DownArrow))
         {
-            if(Time.time - fall >= fallSpeed / 8)
+            if(Time.time - fall >= fallSpeedKey)
             {
                 MinoDown();
             }

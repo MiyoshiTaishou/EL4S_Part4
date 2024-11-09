@@ -1222,6 +1222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallSpeed: 1
+  fallSpeedKey: 0.2
 --- !u!82 &8774728672790974299
 AudioSource:
   m_ObjectHideFlags: 0
