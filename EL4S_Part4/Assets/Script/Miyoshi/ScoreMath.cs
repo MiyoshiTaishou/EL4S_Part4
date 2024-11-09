@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreMath : MonoBehaviour
 {
-    private List<int> sum;
+    private List<int> sum = new List<int>();
+    private List<int> sign = new List<int>();
+    private List<int> num = new List<int>();
     int signnum=-1;
-    List<int> sign;
-    List<int> num;
     public int total=0;
     int tyokuzenn = 0;
     private int Score;
@@ -213,5 +214,10 @@ public class ScoreMath : MonoBehaviour
             }
         }
 
+    }
+
+    private void Update()
+    {
+        GetComponent<Text>().text = total.ToString();
     }
 }
