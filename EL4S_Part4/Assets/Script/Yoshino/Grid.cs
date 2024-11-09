@@ -12,7 +12,7 @@ public class Grid : MonoBehaviour
     private const float lineOffset = -0.5f;
     public GameObject cubeBlock;
 
-    public GameObject ScoreObject;
+    public GameObject ScoreObject;    
 
     private void Start()
     {
@@ -113,6 +113,7 @@ public class Grid : MonoBehaviour
             {
                 DeleteRow(y);
                 DecreaseRowsAbove(y + 1);
+                GetComponent<AudioSource>().Play();
                 //MathRow(y);
                 --y;
             }
