@@ -12,24 +12,33 @@ public class Grid : MonoBehaviour
     private const float lineOffset = -0.5f;
     public GameObject cubeBlock;
 
-    public GameObject ScoreObject;    
+    public GameObject ScoreObject;
+
+    GameObject Wall;
 
     private void Start()
     {
+        Wall = new GameObject("Wall"); 
+        GameObject wall;
         // ‰¡ˆê—ñ
         for (int i = 0; i < width; ++i)
         {
-            Instantiate(cubeBlock, new Vector3(i, -1.0f, 0), Quaternion.identity);
+            wall = Instantiate(cubeBlock, new Vector3(i, -1.0f, 0), Quaternion.identity);
+            wall.transform.parent = Wall.transform;
         }
         // cˆê—ñ(¶)
         for (int i = 0; i < height; ++i)
         {
-            Instantiate(cubeBlock, new Vector3(-1.0f, i - 1.0f, 0), Quaternion.identity);
+            wall = Instantiate(cubeBlock, new Vector3(-1.0f, i - 1.0f, 0), Quaternion.identity);
+            wall.transform.parent = Wall.transform;
+
         }
         // cˆê—ñ(‰E)
         for (int i = 0; i < height; ++i)
         {
-            Instantiate(cubeBlock, new Vector3(width, i - 1.0f, 0), Quaternion.identity);
+            wall = Instantiate(cubeBlock, new Vector3(width, i - 1.0f, 0), Quaternion.identity);
+            wall.transform.parent = Wall.transform;
+
         }
     }
     private void Awake()
