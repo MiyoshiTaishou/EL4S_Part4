@@ -82,8 +82,9 @@ public class Grid : MonoBehaviour
     {
         for (int x = 0; x < width; ++x)
         {
-            ScoreObject.GetComponent<ScoreMath>().Add(grid[x, y].gameObject.GetComponent<MinoSuuji>().moji);           
+            ScoreObject.GetComponent<ScoreMath>().Add(grid[x, y].gameObject.GetComponent<MinoSuuji>().moji);            
         }
+        ScoreObject.GetComponent<ScoreMath>().ScoreCalc();
     }
 
     public void DecreaseRow(int y)
@@ -120,10 +121,10 @@ public class Grid : MonoBehaviour
         {
             if (IsRowFull(y))
             {
+                MathRow(y);
                 DeleteRow(y);
                 DecreaseRowsAbove(y + 1);
-                GetComponent<AudioSource>().Play();
-                //MathRow(y);
+                GetComponent<AudioSource>().Play();                
                 --y;
             }
         }
