@@ -23,9 +23,10 @@ public class Grid : MonoBehaviour
         // ‰¡ˆê—ñ
         for (int i = 0; i < width; ++i)
         {
-            wall = Instantiate(cubeBlock, new Vector3(i, -1.0f, 0), Quaternion.identity);
+            wall = Instantiate(cubeBlock, new Vector3(i, -1.0f, 0), Quaternion.Euler(0, 0, 90)); // 90“x‰ñ“]
             wall.transform.parent = Wall.transform;
         }
+
         // cˆê—ñ(¶)
         for (int i = 0; i < height; ++i)
         {
