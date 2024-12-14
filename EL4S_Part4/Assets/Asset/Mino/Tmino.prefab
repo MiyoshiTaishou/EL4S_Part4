@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moji: 0
   suuji: 010000000200000003000000040000000500000006000000070000000800000009000000
-  kigo: fffffffffefffffffdfffffffcffffff
+  kigo: fffffffffeffffff
 --- !u!1 &3299640926750782669
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,7 +392,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moji: 0
   suuji: 010000000200000003000000040000000500000006000000070000000800000009000000
-  kigo: fffffffffefffffffdfffffffcffffff
+  kigo: fffffffffeffffff
 --- !u!1 &4436654944186332056
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,7 +492,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moji: 0
   suuji: 010000000200000003000000040000000500000006000000070000000800000009000000
-  kigo: fffffffffefffffffdfffffffcffffff
+  kigo: fffffffffeffffff
 --- !u!1 &5673639755525962660
 GameObject:
   m_ObjectHideFlags: 0
@@ -1318,4 +1318,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moji: 0
   suuji: 010000000200000003000000040000000500000006000000070000000800000009000000
-  kigo: fffffffffefffffffdfffffffcffffff
+  kigo: fffffffffeffffff
