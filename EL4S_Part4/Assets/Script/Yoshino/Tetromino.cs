@@ -7,6 +7,11 @@ public class Tetromino : MonoBehaviour
     [Tooltip("落下スピード")] public float fallSpeed = 1; // 落下速度
     [Tooltip("落下スピード(キー入力)")] public float fallSpeedKey = 1; // 落下速度
 
+    [Tooltip("横移動スピード(キー入力)")] public float SideSpeedKey = 0.5f; // 落下速度
+    float sidetime = 0;
+
+    bool KeyUp = true;
+
     void Update()
     {
         CheckUserInput();
@@ -15,29 +20,47 @@ public class Tetromino : MonoBehaviour
     void CheckUserInput()
     {
         // 左矢印キーが押された場合
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
-            // ブロックを左に移動
-            transform.position += new Vector3(-1, 0, 0);
-            // 位置が有効かチェック
-            if (!IsValidGridPos())
-                transform.position += new Vector3(1, 0, 0); // 位置が無効なら元に戻す
-            else
-                Grid.Instance.UpdateGrid(transform); // 位置が有効ならグリッドを更新
+
+            if (Time.time - sidetime >= SideSpeedKey || KeyUp)
+            {
+                // ブロックを左に移動
+                transform.position += new Vector3(-1, 0, 0);
+                // 位置が有効かチェック
+                if (!IsValidGridPos())
+                    transform.position += new Vector3(1, 0, 0); // 位置が無効なら元に戻す
+                else
+                    Grid.Instance.UpdateGrid(transform); // 位置が有効ならグリッドを更新
+                
+                sidetime = Time.time;
+                KeyUp = false;
+            }
         }
         // 右矢印キーが押された場合
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.RightArrow))
         {
-            // ブロックを右に移動
-            transform.position += new Vector3(1, 0, 0);
-            // 位置が有効かチェック
-            if (!IsValidGridPos())
-                transform.position += new Vector3(-1, 0, 0); // 位置が無効なら元に戻す
-            else
-                Grid.Instance.UpdateGrid(transform); // 位置が有効ならグリッドを更新
+            if (Time.time - sidetime >= SideSpeedKey || KeyUp)
+            {
+                // ブロックを右に移動
+                transform.position += new Vector3(1, 0, 0);
+                // 位置が有効かチェック
+                if (!IsValidGridPos())
+                    transform.position += new Vector3(-1, 0, 0); // 位置が無効なら元に戻す
+                else
+                    Grid.Instance.UpdateGrid(transform); // 位置が有効ならグリッドを更新
+
+                sidetime = Time.time;
+                KeyUp = false;
+            }
         }
+        else
+        {
+            KeyUp = true;
+        }
+
         // 上矢印キーが押された場合
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             // ブロックを回転
             transform.Rotate(0, 0, -90);
@@ -47,7 +70,7 @@ public class Tetromino : MonoBehaviour
             else
                 Grid.Instance.UpdateGrid(transform); // 位置が有効ならグリッドを更新
         }
-        else if (Time.time - fall >= fallSpeed)
+        if (Time.time - fall >= fallSpeed)
         {
             MinoDown();
         }
