@@ -5,215 +5,85 @@ using UnityEngine.UI;
 
 public class ScoreMath : MonoBehaviour
 {
-    private List<int> sum = new List<int>();
-    private List<int> sign = new List<int>();
-    private List<int> num = new List<int>();
-    int signnum=-1;
-    public int total=0;
-    int tyokuzenn = 0;
-    private int Score;
-    int numnum=-1;
-    
+    public List<int> sum = new List<int>();
+    public List<int> sign = new List<int>(); // 1: +, 2: -, 3: *, 4: /
+    public List<int> num = new List<int>();
+    public int total = 0;
+
+    // ”š‚ğ’Ç‰Á
     public void Add(int _num)
     {
         sum.Add(_num);
     }
 
+    // ƒXƒRƒAŒvZ
     public void ScoreCalc()
     {
-        for (int i = 0; i < sum.Count; i++)
+        // •Ï”‰Šú‰»
+        num.Clear();
+        sign.Clear();
+        total = 0;
+
+        int currentNumber = 0;
+        bool hasNumber = false;
+
+        // ”š‚Æ‰‰Zq‚ğ•ª—Ş
+        foreach (int value in sum)
         {
-            if (sum[i] > 0 && num.Count==0||tyokuzenn==-1)
+            if (value >= 0)
             {
-                num.Add(sum[i]);
-                tyokuzenn = 1;
-                numnum++;
+                currentNumber = currentNumber * 10 + value;
+                hasNumber = true;
             }
-            else if (sum[i]>0)
+            else
             {
-                num[numnum] *= 10;
-                num[numnum] += sum[i];
-                tyokuzenn = 1;
-            }
-            switch (sum[i])
-            {
-                //‘«‚µZ
-                case -1:
-                    
-                    if(tyokuzenn==1)
-                    {
-                        sign.Add(1);
-                        signnum++;
-                        break;
-                    }
-                    tyokuzenn = -1;
-                    break;
-                //ˆø‚«Z
-                case -2:
-                    if (tyokuzenn == 1)
-                    {
-                        sign.Add(2);
-                        signnum++;
-                        break;
-                    }
-                    tyokuzenn = -1;
-
-
-                    if (sign[signnum] == 1)
-                    {
-                        sign[signnum] = 2;
-                        break;
-                    }
-                    else if (sign[signnum] == 2)
-                    {
-                        sign[signnum] = 1; 
-                        break;
-                    }
-                    else if (sign[signnum] == 3)
-                    {
-                        sign[signnum] = 4;
-                        break;
-                    }
-                    else if (sign[signnum] == 4)
-                    {
-                        sign[signnum] = 3;
-                        break;
-                    }
-                    else if (sign[signnum] == 5)
-                    {
-                        sign[signnum] = 6;
-                        break;
-                    }
-                    else if (sign[signnum] == 6)
-                    {
-                        sign[signnum] = 5;
-                        break;
-                    }
-                    break;
-                //Š|‚¯Z
-                case -3:
-                    if (tyokuzenn == 1)
-                    {
-                        sign.Add(3);
-                        signnum++;
-                        break;
-                    }
-                    tyokuzenn = -1;
-
-                    if (sign[signnum] == 1)
-                    {
-                        sign[signnum] = 3;
-                        break;
-                    }
-                    else if (sign[signnum] == 2)
-                    {
-                        sign[signnum] = 4;
-                        break;
-                    }
-                    else if (sign[signnum] == 5)
-                    {
-                        sign[signnum] = 1;
-                        break;
-                    }
-                    else if (sign[signnum] == 6)
-                    {
-                        sign[signnum] = 2;
-                        break;
-                    }
-
-                    break;
-            @@//Š„‚èZ
-                case -4:
-                    if (tyokuzenn == 1)
-                    {
-                        sign.Add(5);
-                        signnum++;
-                        break;
-                    }
-                    tyokuzenn = -1;
-
-                    if (sign[signnum] == 1)
-                    {
-                        sign[signnum] = 5;
-                        break;
-                    }
-                    else if (sign[signnum] == 2)
-                    {
-                        sign[signnum] = 6;
-                        break;
-                    }
-                    else if (sign[signnum] == 3)
-                    {
-                        sign[signnum] = 1;
-                        break;
-                    }
-                    else if (sign[signnum] == 4)
-                    {
-                        sign[signnum] = 2;
-                        break;
-                    }
-
-                    break;
+                if (hasNumber)
+                {
+                    num.Add(currentNumber);
+                    currentNumber = 0;
+                    hasNumber = false;
+                }
+                sign.Add(-value); // ‰‰Zq‚ğ’Ç‰Á
             }
         }
-        for(int i=0;i<sign.Count;i++)
+
+        // ÅŒã‚Ì”š‚ğ’Ç‰Á
+        if (hasNumber)
         {
-            if (sign[i] >= 3)
+            num.Add(currentNumber);
+        }
+
+        // Š|‚¯ZEŠ„‚èZ‚ğ—DæŒvZ
+        for (int i = 0; i < sign.Count;)
+        {
+            if (sign[i] == 3 || sign[i] == 4) // 3: *, 4: /
             {
-                switch (sign[i]) 
+                if (i + 1 < num.Count)
                 {
-                    case 3:
-                        num[i+1]=num[i] * num[i + 1];
-                        num.Remove(i);
-                        sign.Remove(i);
-                        break;
-                    case 4:
-                        num[i + 1] = num[i] * -num[i + 1];
-                        num.Remove(i);
-                        sign.Remove(i);
-                        break;
-                    case 5:
-                        num[i + 1] = num[i] / num[i + 1];
-                        num.Remove(i);
-                        sign.Remove(i);
-                        break;
-                    case 6:
-                        num[i + 1] = num[i] / -num[i + 1];
-                        num.Remove(i);
-                        sign.Remove(i);
-                        break;
+                    num[i] = sign[i] == 3 ? num[i] * num[i + 1] : num[i] / num[i + 1];
+                    num.RemoveAt(i + 1);
+                    sign.RemoveAt(i);
+                }
+                else
+                {
+                    i++;
                 }
             }
-            if (num.Count == 1)
+            else
             {
-                total += num[0];
+                i++;
             }
         }
+
+        // ‘«‚µZEˆø‚«Z‚ğŒvZ
+        total = num[0];
         for (int i = 0; i < sign.Count; i++)
         {
-            switch (sign[i])
-            {
-                case 1:
-                    num[i + 1] = num[i] + num[i + 1];
-                    num.Remove(i);
-                    sign.Remove(i);
-                    break;
-                case 2:
-                    num[i + 1] = num[i] - num[i + 1];
-                    num.Remove(i);
-                    sign.Remove(i);
-                    break;
-            }
-            if (num.Count == 1)
-            {
-                numnum = 0;
-                signnum = 0;
-                tyokuzenn = 0;
-
-                total += num[0];
-            }
+            total = sign[i] == 1 ? total + num[i + 1] : total - num[i + 1];
         }
 
+        // ƒfƒoƒbƒOƒƒO
+        Debug.Log("Score: " + total);
     }
 
     private void Update()
