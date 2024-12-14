@@ -58,15 +58,23 @@ public class ScoreMath : MonoBehaviour
         {
             if (sign[i] == 3 || sign[i] == 4) // 3: *, 4: /
             {
-                if (i + 1 < num.Count)
+                if (i + 1 < num.Count) // インデックス範囲チェック
                 {
+                    if (sign[i] == 4 && num[i + 1] == 0) // ゼロ除算チェック
+                    {
+                        Debug.LogError("Division by zero detected!");
+                        return;
+                    }
+
+                    // 掛け算・割り算の計算
                     num[i] = sign[i] == 3 ? num[i] * num[i + 1] : num[i] / num[i + 1];
                     num.RemoveAt(i + 1);
                     sign.RemoveAt(i);
                 }
                 else
                 {
-                    i++;
+                    Debug.LogError($"Invalid expression detected during multiplication/division. i: {i}, num.Count: {num.Count}, sign.Count: {sign.Count}");
+                    return;
                 }
             }
             else
@@ -76,11 +84,29 @@ public class ScoreMath : MonoBehaviour
         }
 
         // 足し算・引き算を計算
-        total = num[0];
-        for (int i = 0; i < sign.Count; i++)
+        if (num.Count > 0)
         {
-            total = sign[i] == 1 ? total + num[i + 1] : total - num[i + 1];
+            total = num[0];
+            for (int i = 0; i < sign.Count; i++)
+            {
+                if (i + 1 < num.Count) // インデックス範囲チェック
+                {
+                    total = sign[i] == 1 ? total + num[i + 1] : total - num[i + 1];
+                }
+                else
+                {
+                    Debug.LogError($"Invalid expression detected during addition/subtraction. i: {i}, num.Count: {num.Count}, sign.Count: {sign.Count}");
+                    return;
+                }
+            }
         }
+        else
+        {
+            Debug.LogError("No numbers available for calculation.");
+            return;
+        }
+
+
 
         // デバッグログ
         Debug.Log("Score: " + total);
@@ -88,6 +114,14 @@ public class ScoreMath : MonoBehaviour
 
     private void Update()
     {
-        GetComponent<Text>().text = total.ToString();
+        Text textComponent = GetComponent<Text>();
+        if (textComponent != null)
+        {
+            textComponent.text = total.ToString();
+        }
+        else
+        {
+            Debug.LogError("Text component not found on the GameObject.");
+        }
     }
 }
