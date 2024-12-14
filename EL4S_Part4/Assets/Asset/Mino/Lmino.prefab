@@ -244,6 +244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fallSpeed: 1
   fallSpeedKey: 0.2
+  SideSpeedKey: 0.2
 --- !u!82 &-5362259684499265070
 AudioSource:
   m_ObjectHideFlags: 0
