@@ -15,12 +15,14 @@ public class TitleScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (!isSceneLoading && Input.anyKeyDown)
         {
             isSceneLoading = true;
             audioSource.Play();
             StartCoroutine(PlaySEAndLoadScene());
         }
+
     }
 
     IEnumerator PlaySEAndLoadScene()

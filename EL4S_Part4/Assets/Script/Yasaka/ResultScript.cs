@@ -26,12 +26,19 @@ public class ResultScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (!isSceneLoading && Input.GetKeyDown(KeyCode.Space))
         {
             isSceneLoading = true;
             audioSource.Play();
             PressAnyKey();
+
         }
+
+        //if (Input.anyKeyDown)
+        //{
+        //    PressAnyKey();
+        //}
     }
 
     public void SetScoreText(float _score)
