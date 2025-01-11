@@ -14,7 +14,8 @@ public class Tetromino : MonoBehaviour
 
     void Update()
     {
-        CheckUserInput();
+        if (!Grid.IsGameOver()) // ゲームオーバー条件のチェック
+            CheckUserInput();
     }
     // ユーザー入力をチェックしてブロックを移動または回転させる
     void CheckUserInput()

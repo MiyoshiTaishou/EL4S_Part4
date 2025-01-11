@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Grid : MonoBehaviour
 {
@@ -8,13 +9,19 @@ public class Grid : MonoBehaviour
     public static int width = 10;
     public static int height = 20;
     // グリッドを格納する2次元配列
-    public static Transform[,] grid;
+    // public static Transform[,] grid;
+    public static Transform[,] grid = new Transform[width, height];
     private const float lineOffset = -0.5f;
     public GameObject cubeBlock;
 
     public GameObject ScoreObject;
 
     GameObject Wall;
+
+    [SerializeField] string NextScene = "Title";
+    [SerializeField] float TransitionTime = 3f;
+
+    bool GameOver = false;
 
     private void Start()
     {
@@ -41,6 +48,8 @@ public class Grid : MonoBehaviour
             wall.transform.parent = Wall.transform;
 
         }
+        GameOver = false;
+
     }
     private void Awake()
     {
@@ -56,6 +65,26 @@ public class Grid : MonoBehaviour
             grid = new Transform[width, height];
             DontDestroyOnLoad(gameObject);
         }
+    }
+
+    private void Update()
+    {
+        if (Grid.IsGameOver()) // ゲームオーバー条件のチェック
+        {
+            //GameOver = true;
+            if(!GameOver)
+            {
+                Invoke(nameof(LoadNextScene), TransitionTime);
+                GameOver = true;
+            }
+            //Debug.Log("Game Over!");
+            // ゲームオーバー処理、例えばシーンをリロードするなど
+        }
+    }
+    // このメソッドを Invoke で呼び出す
+    public void LoadNextScene()
+    {
+        SceneManager.LoadScene(NextScene);
     }
     // ベクトルを整数に丸める
     public Vector2 RoundVector2(Vector2 v)
@@ -127,6 +156,7 @@ public class Grid : MonoBehaviour
                 DecreaseRowsAbove(y + 1);
                 GetComponent<AudioSource>().Play();                
                 --y;
+
             }
         }
     }
@@ -156,5 +186,18 @@ public class Grid : MonoBehaviour
         Gizmos.DrawLine(new Vector3(width + lineOffset, lineOffset, 0), new Vector3(width + lineOffset, height + lineOffset, 0));
         // 下境界線
         Gizmos.DrawLine(new Vector3(lineOffset, lineOffset, 0), new Vector3(width + lineOffset, lineOffset, 0));
+    }
+
+        public static bool IsGameOver()
+    {
+        for (int x = 0; x < width; x++)
+        {
+            // グリッドの最上行にブロックが存在するかチェック
+            if (grid[x, height - 1] != null)
+            {
+                return true; // ゲームオーバー条件を満たす
+            }
+        }
+        return false;
     }
 }

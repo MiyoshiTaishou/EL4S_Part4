@@ -248,6 +248,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cubeBlock: {fileID: 3269806561978962704, guid: 0401a6097ecc5db40b7c53b54688e27b, type: 3}
   ScoreObject: {fileID: 786881036}
+  NextScene: Result
+  TransitionTime: 3
 --- !u!4 &85680373
 Transform:
   m_ObjectHideFlags: 0
