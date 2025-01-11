@@ -18,10 +18,10 @@ public class TitleScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetButtonDown("Fire1"))
+        if (Input.anyKeyDown)
         {
             StartCoroutine(SceneLoadAsync());
-        }
+        }       
     }
 
     IEnumerator SceneLoadAsync()
