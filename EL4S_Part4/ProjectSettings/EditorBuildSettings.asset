@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Yoshino_Scene.unity
     guid: 77ebbc4340884854093dec98ca8f9fe2
+  - enabled: 1
+    path: Assets/Scenes/Result.unity
+    guid: 79c854ad23231f042aef62152c161afd
   m_configObjects: {}
