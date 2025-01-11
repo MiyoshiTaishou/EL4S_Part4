@@ -1,31 +1,34 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class TitleScript : MonoBehaviour
 {
     [SerializeField]
-    string sceneName;
+    private string sceneName;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private AudioSource audioSource; // AudioSource をインスペクターで設定
+
+    private bool isSceneLoading = false; // シーン遷移中の重複入力防止用フラグ
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.anyKeyDown)
+        if (!isSceneLoading && Input.anyKeyDown)
         {
-            StartCoroutine(SceneLoadAsync());
-        }       
+            isSceneLoading = true;
+            audioSource.Play();
+            StartCoroutine(PlaySEAndLoadScene());
+        }
     }
 
-    IEnumerator SceneLoadAsync()
+    IEnumerator PlaySEAndLoadScene()
     {
+        // SE の再生が完了するのを待つ
+        yield return new WaitForSeconds(audioSource.clip.length);
+
+        // シーンを非同期でロードする
         var async = SceneManager.LoadSceneAsync(sceneName);
 
         // ロードが完了するまで待機する
