@@ -2,6 +2,11 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum STATE_TITLE
+{
+    TITLE, TUTRIAL
+}
+
 public class TitleScript : MonoBehaviour
 {
     [SerializeField]
@@ -10,7 +15,17 @@ public class TitleScript : MonoBehaviour
     [SerializeField]
     private AudioSource audioSource; // AudioSource をインスペクターで設定
 
+    [SerializeField]
+    GameObject titleLogo, pressText, tutrialObj;
+
+    STATE_TITLE state;
+
     private bool isSceneLoading = false; // シーン遷移中の重複入力防止用フラグ
+
+    private void Start()
+    {
+        state = STATE_TITLE.TITLE;
+    }
 
     // Update is called once per frame
     void Update()
@@ -20,9 +35,31 @@ public class TitleScript : MonoBehaviour
             if (Input.GetKeyUp(key))
             {
                 audioSource.Play();
-                StartCoroutine(PlaySEAndLoadScene());
+
+                switch (state)
+                {
+                    case STATE_TITLE.TITLE:
+                        tutrialObj.SetActive(true);
+
+                        titleLogo.SetActive(false);
+                        pressText.SetActive(false);
+
+                        state = STATE_TITLE.TUTRIAL;
+                        break;
+
+                    case STATE_TITLE.TUTRIAL:
+                        StartCoroutine(PlaySEAndLoadScene());
+                        break;
+
+                    default:
+                        Debug.LogError("タイトル画面のステートエラー　八坂");
+                        break;
+                }
+                //StartCoroutine(PlaySEAndLoadScene());
             }
         }
+
+       
 
         //if (!isSceneLoading && Input.anyKeyDown)
         //{
