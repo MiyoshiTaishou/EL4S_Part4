@@ -12,6 +12,11 @@ public class ResultScript : MonoBehaviour
     [SerializeField]
     string sceneName;
 
+    [SerializeField]
+    private AudioSource audioSource; // AudioSource をインスペクターで設定
+
+    private bool isSceneLoading = false; // シーン遷移中の重複入力防止用フラグ
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +26,10 @@ public class ResultScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.anyKeyDown)
+        if (!isSceneLoading && Input.GetKeyDown(KeyCode.Space))
         {
+            isSceneLoading = true;
+            audioSource.Play();
             PressAnyKey();
         }
     }
@@ -39,6 +46,10 @@ public class ResultScript : MonoBehaviour
 
     IEnumerator SceneLoadAsync()
     {
+        // SE の再生が完了するのを待つ
+        yield return new WaitForSeconds(audioSource.clip.length);
+
+        // シーンを非同期でロードする
         var async = SceneManager.LoadSceneAsync(sceneName);
 
         // ロードが完了するまで待機する
