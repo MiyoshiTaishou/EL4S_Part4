@@ -2250,7 +2250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c87acfbc8aa68140a4a604fe14ef8a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: 
+  sceneName: Yoshino_Scene
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
