@@ -1031,6 +1031,8 @@ MonoBehaviour:
   fallSpeed: 1
   fallSpeedKey: 0.1
   SideSpeedKey: 0.2
+  rotationtime: 1
+  minotate: 2
 --- !u!82 &3740864231717539777
 AudioSource:
   m_ObjectHideFlags: 0

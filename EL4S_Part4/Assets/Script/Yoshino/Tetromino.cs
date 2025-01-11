@@ -10,7 +10,19 @@ public class Tetromino : MonoBehaviour
     [Tooltip("横移動スピード(キー入力)")] public float SideSpeedKey = 0.5f; // 落下速度
     float sidetime = 0;
 
+   // [Tooltip("生成されてから回転できるまでの時間")] public float rotationtime = 1; // 落下速度
+    //float rottime = 0f;
+
     bool KeyUp = true;
+    [Tooltip("みのの最大縦幅")] public float minotate = 1; // 落下速度
+
+    int downnum = 0;
+
+    private void Start()
+    {
+        //rottime = Time.time;
+
+    }
 
     void Update()
     {
@@ -20,6 +32,8 @@ public class Tetromino : MonoBehaviour
     // ユーザー入力をチェックしてブロックを移動または回転させる
     void CheckUserInput()
     {
+        
+
         // 左矢印キーが押された場合
         if (Input.GetKey(KeyCode.LeftArrow))
         {
@@ -61,7 +75,7 @@ public class Tetromino : MonoBehaviour
         }
 
         // 上矢印キーが押された場合
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow) && /*Time.time - rottime >= rotationtime*/ downnum >= minotate)
         {
             // ブロックを回転
             transform.Rotate(0, 0, -90);
@@ -88,6 +102,7 @@ public class Tetromino : MonoBehaviour
 
     void MinoDown()
     {
+        downnum++;
         // ブロックを一段下に移動
         transform.position += new Vector3(0, -1f, 0);
         // 位置が有効かチェック
@@ -119,15 +134,25 @@ public class Tetromino : MonoBehaviour
         {
             Vector2 v = Grid.Instance.RoundVector2(child.position);
 
+            // グリッドの横範囲のみをチェックし、上部は無視する
             if (!Grid.Instance.InsideBorder(v))
-                return false;
+            {
+                if (v.y >= Grid.height) // 上のラインは無視
+                    continue;
 
-            if (Grid.grid[(int)v.x, (int)v.y] != null &&
+                return false; // それ以外は無効
+            }
+
+            // 上部のラインのグリッドは無視する
+            if (v.y < Grid.height && Grid.grid[(int)v.x, (int)v.y] != null &&
                 Grid.grid[(int)v.x, (int)v.y].parent != transform)
+            {
                 return false;
+            }
         }
         return true;
     }
+
 
     void UpdateGrid()
     {
