@@ -18,10 +18,10 @@ public class Grid : MonoBehaviour
 
     GameObject Wall;
 
-    [SerializeField] string NextScene = "Title";
-    [SerializeField] float TransitionTime = 3f;
+    //[SerializeField] string NextScene = "Title";
+    //[SerializeField] float TransitionTime = 3f;
 
-    bool GameOver = false;
+    public static bool GameOver = false;
 
     public void Init()
     {
@@ -76,17 +76,17 @@ public class Grid : MonoBehaviour
 
     private void Update()
     {
-        if (Grid.IsGameOver()) // ゲームオーバー条件のチェック
-        {
-            //GameOver = true;
-            if(!GameOver)
-            {
-                Invoke(nameof(LoadNextScene), TransitionTime);
-                GameOver = true;
-            }
-            //Debug.Log("Game Over!");
-            // ゲームオーバー処理、例えばシーンをリロードするなど
-        }
+        //if (Grid.IsGameOver()) // ゲームオーバー条件のチェック
+        //{
+        //    //GameOver = true;
+        //    if(!GameOver)
+        //    {
+        //        Invoke(nameof(LoadNextScene), TransitionTime);
+        //        GameOver = true;
+        //    }
+        //    //Debug.Log("Game Over!");
+        //    // ゲームオーバー処理、例えばシーンをリロードするなど
+        //}
     }
 
     private void OnEnable()
@@ -112,7 +112,7 @@ public class Grid : MonoBehaviour
     // このメソッドを Invoke で呼び出す
     public void LoadNextScene()
     {
-        SceneManager.LoadScene(NextScene);
+        //SceneManager.LoadScene(NextScene);
     }
     // ベクトルを整数に丸める
     public Vector2 RoundVector2(Vector2 v)
