@@ -15,7 +15,7 @@ public class ResultScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //SetScoreText( ‚±‚±‚ÉƒXƒRƒA•Ï”‚ğ );
+        SetScoreText(ScoreMath.total);
     }
 
     // Update is called once per frame
