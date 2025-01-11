@@ -8,7 +8,7 @@ public class ScoreMath : MonoBehaviour
     public List<int> sum = new List<int>();
     public List<int> sign = new List<int>(); // 1: +, 2: -, 3: *, 4: /
     public List<int> num = new List<int>();
-    public int total = 0;
+    static public int total = 0;
 
     // ”š‚ğ’Ç‰Á
     public void Add(int _num)
