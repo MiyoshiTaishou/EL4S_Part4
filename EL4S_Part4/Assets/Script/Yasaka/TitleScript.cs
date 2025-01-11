@@ -18,10 +18,19 @@ public class TitleScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.anyKeyDown)
+        // 全てのキーをチェックして離された瞬間を検出
+        foreach (KeyCode key in System.Enum.GetValues(typeof(KeyCode)))
         {
-            StartCoroutine(SceneLoadAsync());
-        }       
+            if (Input.GetKeyUp(key))
+            {
+                StartCoroutine(SceneLoadAsync());
+            }
+        }
+
+        //if (Input.anyKeyDown)
+        //{
+        //    StartCoroutine(SceneLoadAsync());
+        //}       
     }
 
     IEnumerator SceneLoadAsync()

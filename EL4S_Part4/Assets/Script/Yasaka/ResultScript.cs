@@ -21,10 +21,19 @@ public class ResultScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.anyKeyDown)
+        // 全てのキーをチェックして離された瞬間を検出
+        foreach (KeyCode key in System.Enum.GetValues(typeof(KeyCode)))
         {
-            PressAnyKey();
+            if (Input.GetKeyUp(key))
+            {
+                PressAnyKey();
+            }
         }
+
+        //if (Input.anyKeyDown)
+        //{
+        //    PressAnyKey();
+        //}
     }
 
     public void SetScoreText(float _score)
