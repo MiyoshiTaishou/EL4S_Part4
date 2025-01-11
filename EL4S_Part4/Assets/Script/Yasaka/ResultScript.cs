@@ -26,18 +26,21 @@ public class ResultScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (!isSceneLoading && Input.GetKeyDown(KeyCode.Space))
+        foreach (KeyCode key in System.Enum.GetValues(typeof(KeyCode)))
         {
-            isSceneLoading = true;
-            audioSource.Play();
-            PressAnyKey();
-
+            if (Input.GetKeyUp(key))
+            {
+                audioSource.Play();
+                PressAnyKey();
+            }
         }
 
-        //if (Input.anyKeyDown)
+        //if (!isSceneLoading && Input.GetKeyDown(KeyCode.Space))
         //{
+        //    isSceneLoading = true;
+        //    audioSource.Play();
         //    PressAnyKey();
+
         //}
     }
 

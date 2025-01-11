@@ -15,13 +15,21 @@ public class TitleScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (!isSceneLoading && Input.anyKeyDown)
+        foreach (KeyCode key in System.Enum.GetValues(typeof(KeyCode)))
         {
-            isSceneLoading = true;
-            audioSource.Play();
-            StartCoroutine(PlaySEAndLoadScene());
+            if (Input.GetKeyUp(key))
+            {
+                audioSource.Play();
+                StartCoroutine(PlaySEAndLoadScene());
+            }
         }
+
+        //if (!isSceneLoading && Input.anyKeyDown)
+        //{
+        //    isSceneLoading = true;
+        //    audioSource.Play();
+        //    StartCoroutine(PlaySEAndLoadScene());
+        //}
 
     }
 
