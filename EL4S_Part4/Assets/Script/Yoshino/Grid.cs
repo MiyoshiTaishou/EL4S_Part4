@@ -23,9 +23,9 @@ public class Grid : MonoBehaviour
 
     bool GameOver = false;
 
-    private void Start()
+    public void Init()
     {
-        Wall = new GameObject("Wall"); 
+        Wall = new GameObject("Wall");
         GameObject wall;
         // 横一列
         for (int i = 0; i < width; ++i)
@@ -50,6 +50,13 @@ public class Grid : MonoBehaviour
         }
         GameOver = false;
 
+        Debug.Log("初期化");
+
+    }
+
+    private void Start()
+    {
+        Init();
     }
     private void Awake()
     {
@@ -81,6 +88,27 @@ public class Grid : MonoBehaviour
             // ゲームオーバー処理、例えばシーンをリロードするなど
         }
     }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded; // シーンロードイベントを登録
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded; // イベント登録解除
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("シーン遷移完了");
+
+        if(SceneManager.GetActiveScene().name == "Yoshino_Scene")
+        {
+            // シーンがロードされた後に初期化
+            Init();
+        }
+    }
+
     // このメソッドを Invoke で呼び出す
     public void LoadNextScene()
     {
